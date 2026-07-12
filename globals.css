@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: #14b8c6;
+  color: #ffffff;
+}
+
+/* Signature element: the "smile line" -- a gradient rule echoing the
+   underline in the B&S mark. Used as a section-title accent, nav
+   indicator and micro-divider throughout the site. */
+.smile-line {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #14b8c6 0%, #2e6fe0 100%);
+  transform-origin: left center;
+}
+
+.eyebrow {
+  font-family: var(--font-plex-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5b6b7c;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid #14b8c6;
+  outline-offset: 3px;
+}
+
+/* Reveal-on-scroll utility, progressively enhanced via IntersectionObserver in ScrollReveal.tsx */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.reveal.is-visible {
+  animation: fadeUpReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes fadeUpReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
